@@ -66,4 +66,7 @@ SELECT  c.name, AVG(DATEDIFF(sh.changed_at, a.application_date)) AS avg_days
 FROM applications a
 JOIN companies c USING (company_id)
 JOIN status_history sh ON a.application_id = sh.application_id
-GROUP BY c.name
+GROUP BY c.name;
+
+SELECT application_id, status, changed_at,ROW_NUMBER() OVER (PARTITION BY application_id  ORDER BY  changed_at) AS result
+FROM status_history;
