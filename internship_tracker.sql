@@ -32,3 +32,25 @@ CREATE TABLE refrence (
     linkedin_url VARCHAR(200),
     FOREIGN KEY (company_id) REFERENCES companies(company_id)
 );
+INSERT INTO companies (name, industry, location, website) VALUES
+('Siemens Egypt', 'Engineering', 'Cairo', 'https://www.siemens.com/eg'),
+('SAP Egypt', 'Software', 'Cairo', 'https://www.sap.com/eg'),
+('Valeo Egypt', 'Automotive', 'Cairo', 'https://www.valeo.com');
+
+INSERT INTO applications (company_id, position_title, application_date, status, notes) VALUES
+(1, 'Software Engineering Intern', '2026-05-10', 'Applied', 'Found via career fair'),
+(2, 'Backend Developer Intern', '2026-05-15', 'Under Review', 'Referred by contact'),
+(3, 'Embedded Systems Intern', '2026-06-01', 'Rejected', 'No response after 3 weeks');
+
+INSERT INTO status_history (application_id, status, changed_at) VALUES
+(1, 'Applied', '2026-05-10 09:00:00'),
+(2, 'Applied', '2026-05-15 10:30:00'),
+(2, 'Under Review', '2026-05-20 14:00:00'),
+(3, 'Applied', '2026-06-01 11:00:00'),
+(3, 'Rejected', '2026-06-15 16:45:00');
+
+INSERT INTO refrence (company_id, name, role, email, linkedin_url) VALUES
+(1, 'Anna Müller', 'HR Recruiter', 'anna.mueller@siemens.com', 'https://linkedin.com/in/example1'),
+(2, 'Karim Hassan', 'Engineering Manager', 'karim.hassan@sap.com', 'https://linkedin.com/in/example2'),
+(3, 'Lea Becker', 'Talent Acquisition', 'lea.becker@valeo.com', 'https://linkedin.com/in/example3');
+
