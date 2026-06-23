@@ -54,3 +54,16 @@ INSERT INTO refrence (company_id, name, role, email, linkedin_url) VALUES
 (2, 'Karim Hassan', 'Engineering Manager', 'karim.hassan@sap.com', 'https://linkedin.com/in/example2'),
 (3, 'Lea Becker', 'Talent Acquisition', 'lea.becker@valeo.com', 'https://linkedin.com/in/example3');
 
+SELECT a.application_id, c.name AS company_name, a.position_title, a.status, a.application_date
+FROM applications a
+JOIN companies c USING (company_id) ;
+
+SELECT status, COUNT(*) AS total
+FROM applications
+GROUP BY status;
+
+SELECT  c.name, AVG(DATEDIFF(sh.changed_at, a.application_date)) AS avg_days
+FROM applications a
+JOIN companies c USING (company_id)
+JOIN status_history sh ON a.application_id = sh.application_id
+GROUP BY c.name
